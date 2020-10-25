@@ -1,12 +1,6 @@
- /*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/templates/simple-sidebar)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
-
- #wrapper {
-    overflow-x: hidden;
- }
+#wrapper {
+  overflow-x: hidden;
+}
 
 #sidebar-wrapper {
   min-height: 100vh;
@@ -20,6 +14,7 @@
 #sidebar-wrapper .sidebar-heading {
   padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
+  font-family: "Lobster", cursive;
 }
 
 #sidebar-wrapper .list-group {
@@ -47,4 +42,51 @@
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
+}
+
+.border-r {
+  border-right: 1px solid #FFC0CB;
+}
+
+.border-b {
+  border-bottom: 1px solid #FFC0CB;
+}
+
+.custom-list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #fff;
+    border: 1px solid #FFC0CB;
+}
+
+.list-group-flush > .custom-list-group-item  {
+    border-width: 0 0 1px;
+}
+
+.bg-pink {
+    background-color: #fef5f5 !important;
+}
+
+.list-group .bg-pink:hover{
+  background-color: #f4c2c2 !important;
+}
+
+.custom-list-group-item-action {
+  width: 100%;
+  color: #8675a9;
+  text-align: inherit;
+}
+
+.custom-list-group-item-action:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.active > .custom-nav-link {
+  color:red;
+}
+
+.navbar-pink .navbar-nav .active > .nav-link, .navbar-pink a {
+  color: #8675a9;
 }
