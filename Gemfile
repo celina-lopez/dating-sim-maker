@@ -7,6 +7,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'react_on_rails'
 gem "light-service", "~> 0.14.0"
+gem 'annotate'
 gem "simple_form", "~> 5.0"
 gem "pundit", "~> 2.1"
 gem "kaminari", "~> 1.2"
