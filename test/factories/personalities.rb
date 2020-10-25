@@ -4,6 +4,8 @@
 #
 #  id                   :bigint           not null, primary key
 #  acts_of_service      :float            default(0.2), not null
+#  name                 :string
+#  object_type          :string           not null
 #  physicial_touch      :float            default(0.2), not null
 #  quality_time         :float            default(0.2), not null
 #  receiving_gifts      :float            default(0.2), not null
