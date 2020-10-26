@@ -3,6 +3,7 @@ class StoriesController < ApplicationController
   before_action :set_story, except: [:index, :new, :create]
 
   def index
+    @stories = Story.all
   end
 
   def new

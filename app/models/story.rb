@@ -10,4 +10,14 @@
 #
 class Story < ApplicationRecord
   has_many :characters
+
+
+  def mini_description
+    max_size = 100
+    if description.size > max_size
+      "#{description[0..100]}..."
+    else
+      description 
+    end
+  end
 end
