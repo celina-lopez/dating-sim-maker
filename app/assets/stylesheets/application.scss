@@ -29,3 +29,18 @@ h1, h2, h3, h4 {
 .ds-valid {
   border-color: #28a745;
 }
+
+.btn-dating {
+  background-color: #8bcdcd;
+  border: 1px solid #8bcdcd;
+  color: #fcf876;
+}
+
+.parsley-errors-list {
+  list-style: outside none none;
+  padding: 0;
+}
+
+.parsley-required {
+  color: #cc0e74;
+}

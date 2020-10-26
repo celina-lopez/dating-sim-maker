@@ -11,6 +11,13 @@ class StoriesController < ApplicationController
   end
 
   def create
+    result = Stories::Create.call(story_params)
+    if result.success?
+      @story = result.story
+      respond_with(@story, location: -> { stories_path })
+    else
+      render :new
+    end
   end
 
   def show
@@ -24,7 +31,11 @@ class StoriesController < ApplicationController
       @story = Story.find(params[:id])
     end
 
-    def upload_story_params
-      params.require(:story).permit()
+    def story_params
+      params.require(:story).permit(
+        :id,
+        :title,
+        :description,
+      )
     end
 end
