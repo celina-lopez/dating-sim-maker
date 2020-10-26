@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-
+  before_action :authenticate!
   before_action :set_story, except: [:index, :new, :create]
 
   def index

@@ -47,11 +47,6 @@ ActiveRecord::Schema.define(version: 2020_10_26_065157) do
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "stories", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
@@ -62,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_065157) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "name"
+    t.string "password", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
