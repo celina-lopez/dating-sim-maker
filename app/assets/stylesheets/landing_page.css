@@ -72,6 +72,12 @@
   background-color: #f4c2c2 !important;
 }
 
+.list-group .active, .list-group .active:hover {
+  background-color: #8bcdcd !important;
+  color: #fcf876;
+  border: none;
+}
+
 .custom-list-group-item-action {
   width: 100%;
   color: #8675a9;

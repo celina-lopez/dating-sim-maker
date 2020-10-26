@@ -12,14 +12,20 @@
  *
  *= require_tree .
  *= require_self
+ *= pretty-checkbox
  */
 @import "bootstrap/scss/bootstrap";
+@import 'pretty-checkbox';
 
 body {
-	font-family: 'Nunito', sans-serif;
-	color: #8675a9;
+  font-family: 'Nunito', sans-serif;
+  color: #8675a9;
 }
 
 h1, h2, h3, h4 {
-	font-family: 'Lobster', cursive;
+  font-family: 'Lobster', cursive;
+}
+
+.ds-valid {
+  border-color: #28a745;
 }

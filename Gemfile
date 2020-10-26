@@ -26,7 +26,6 @@ gem "webpacker", "~> 4.2"
 gem "turbolinks", "~> 5.2"
 gem "jbuilder", "~> 2.10"
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
