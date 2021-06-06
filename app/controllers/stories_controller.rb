@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :set_story, except: [:index, :new, :create]
 
   def index
-    @stories = Story.all
+    @stories = current_user.stories
   end
 
   def new
@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
   end
 
   def create
-    result = Stories::Create.call(story_params)
+    result = Stories::Create.call(story_params.merge({ user: current_user }))
     if result.success?
       @story = result.story
       respond_with(@story, location: -> { stories_path })
@@ -27,6 +27,9 @@ class StoriesController < ApplicationController
   def update
   end
 
+  def edit
+  end
+
   private
     def set_story
       @story = Story.find(params[:id])
@@ -37,6 +40,7 @@ class StoriesController < ApplicationController
         :id,
         :title,
         :description,
+        :status,
       )
     end
 end

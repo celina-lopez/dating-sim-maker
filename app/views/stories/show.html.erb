@@ -1,2 +1,48 @@
 <h1><%= @story.title %></h1>
 <p><%= @story.description %></p>
+
+<div class="row">
+  <div class="col-4">
+    <div id="character" class="card text-white bg-lavender mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
+      <div class="card-header text-center">─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───</div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="fas fa-dove"></i> Characters <i class="fas fa-dove"></i>
+        </h5>
+        <p class="card-text">List of characters?</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div id="chapter" class="card text-white bg-lavender mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
+      <div class="card-header text-center">─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───</div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="fas fa-star"></i> Chapters <i class="fas fa-star"></i>
+        </h5>
+        <p class="card-text">List of chapters?</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div id="story" class="card text-white bg-lavender mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
+      <div class="card-header text-center">─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───</div>
+      <div class="card-body">
+        <h5 class="card-title"> <i class="fas fa-chess-knight fa-flip-horizontal"></i> Edit Story <i class="fas fa-chess-knight"></i></h5>
+        <p class="card-text"><%= @story.status.humanize %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#character').click(function(){
+    window.location.href = "<%= characters_path %>";
+  });
+  $('#chapter').click(function(){
+    window.location.href = "<%= story_chapters_path(@story) %>";
+  });
+  $('#story').click(function(){
+    window.location.href = "<%= edit_story_path(@story) %>";
+  });
+</script>

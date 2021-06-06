@@ -1,0 +1,12 @@
+<%= f.input :title %>
+<%= f.input :order_number %>
+<%= f.input(
+  :status,
+  as: :select,
+  collection: Chapter.statuses.keys.map {|k| [k.humanize, k]},
+)%>
+<%= f.input(
+  :chap_type,
+  as: :select,
+  collection: Chapter.chap_types.keys.map {|k| [k.humanize, k]},
+)%>

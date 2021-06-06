@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :username
 
   has_many :relationships
+  has_many :stories
+  has_many :characters
 end

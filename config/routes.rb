@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :stories
+  resources :stories do 
+  	resources :chapters do
+      resources :lines
+    end
+  end
+  resources :characters
 
   resources :sessions, only: [:new, :create] do 
     collection do 

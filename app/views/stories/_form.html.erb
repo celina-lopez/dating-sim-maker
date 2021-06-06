@@ -1,2 +1,7 @@
 <%= f.input :title, required: true %>
 <%= f.input :description %>
+<%= f.input(
+  :status,
+  as: :select,
+  collection: Story.statuses.keys.map {|k| [k.humanize, k]},
+)%>

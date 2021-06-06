@@ -1,0 +1,7 @@
+<h1>Edit Character</h1>
+<%= simple_form_for(@character, html: { 'data-parsley-validate': true}) do |f| %>
+  <%= render "form", f: f %>
+  <div class="form-actions pb-2">
+    <%= f.button :submit, class: 'btn-dating' %>
+  </div>
+<% end %>

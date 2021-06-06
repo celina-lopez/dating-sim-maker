@@ -10,37 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_065157) do
+ActiveRecord::Schema.define(version: 2021_06_05_180157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "chapters", force: :cascade do |t|
+    t.bigint "story_id", null: false
+    t.integer "order_number", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "chap_type", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["story_id"], name: "index_chapters_on_story_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name", null: false
     t.text "biography"
-    t.bigint "story_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["story_id"], name: "index_characters_on_story_id"
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
-  create_table "personalities", force: :cascade do |t|
-    t.string "name"
-    t.float "words_of_affirmation", default: 0.2, null: false
-    t.float "quality_time", default: 0.2, null: false
-    t.float "acts_of_service", default: 0.2, null: false
-    t.float "receiving_gifts", default: 0.2, null: false
-    t.float "physicial_touch", default: 0.2, null: false
-    t.integer "object_id", null: false
-    t.string "object_type", null: false
+  create_table "lines", force: :cascade do |t|
+    t.bigint "chapter_id", null: false
+    t.text "text", null: false
+    t.string "speakeable", null: false
+    t.integer "speakeable_id", null: false
+    t.integer "order", null: false
+    t.integer "line_type", default: 0, null: false
+    t.integer "option_id"
+    t.integer "emotion", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["chapter_id"], name: "index_lines_on_chapter_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.bigint "chapter_id", null: false
+    t.text "question", null: false
+    t.integer "order", null: false
+    t.string "answers", default: [], null: false, array: true
+    t.integer "weights", default: [], null: false, array: true
+    t.integer "emotion", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chapter_id"], name: "index_options_on_chapter_id"
   end
 
   create_table "relationships", force: :cascade do |t|
     t.bigint "character_id", null: false
     t.bigint "user_id", null: false
-    t.float "progress", default: 0.0, null: false
+    t.float "love_meter", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_relationships_on_character_id"
@@ -50,8 +74,11 @@ ActiveRecord::Schema.define(version: 2020_10_26_065157) do
   create_table "stories", force: :cascade do |t|
     t.string "title", null: false
     t.text "description"
+    t.bigint "user_id", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

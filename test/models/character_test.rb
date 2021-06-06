@@ -7,11 +7,11 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  story_id   :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_characters_on_story_id  (story_id)
+#  index_characters_on_user_id  (user_id)
 #
 require 'test_helper'
 

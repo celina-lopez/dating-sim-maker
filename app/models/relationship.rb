@@ -3,7 +3,7 @@
 # Table name: relationships
 #
 #  id           :bigint           not null, primary key
-#  progress     :float            default(0.0), not null
+#  love_meter   :float            default(0.0), not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  character_id :bigint           not null
