@@ -19,8 +19,6 @@
 #  index_lines_on_chapter_id  (chapter_id)
 #
 class Line < ApplicationRecord
-	belongs_to :speakeable, polymorphic: true
-
   validates_uniqueness_of :order, scope: :chapter_id
 
   enum line_type: {
@@ -33,4 +31,14 @@ class Line < ApplicationRecord
   }
 
   belongs_to :option, optional: true
+  belongs_to :chapter
+
+
+  def speaker_name
+    if speakeable_id == 0
+      "MC"
+    else
+      Character.find(speakeable_id).name
+    end
+  end
 end

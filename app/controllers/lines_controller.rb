@@ -12,7 +12,7 @@ class LinesController < ApplicationController
   def create
     @line = Line.new(line_params.merge({ chapter: @chapter }))
     if @line.save
-      respond_with(@line, location: -> { story_chapter_lines_path })
+      respond_with(@line, location: -> { story_chapter_path(@chapter) })
     else
       render :new
     end
@@ -50,12 +50,20 @@ class LinesController < ApplicationController
     end
 
     def line_params
-      params.require(:chapter).permit(
+      if params[:line][:speakeable_id] == 0
+        params[:line][:speakeable] = "User"
+      else
+        params[:line][:speakeable] = "Character"
+      end
+
+      params.require(:line).permit(
         :id,
-     		:order_number,
-     		:status,
-     		:chap_type,
-     		:title,
+     		:order,
+     		:line_type,
+     		:emotion,
+        :text,
+        :speakeable,
+        :speakeable_id,
       )
     end
 end

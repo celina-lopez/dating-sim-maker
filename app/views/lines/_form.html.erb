@@ -1,5 +1,19 @@
 <%= f.input :order %>
-<%= f.input :speakeable %>
+<!-- hide order -->
+<%= f.input(
+  :speakeable_id,
+  as: :select,
+  collection: [
+    ["MC", 0],
+    *current_user.characters.map{ |c| [c.name, c.id] }
+  ]
+)%>
 <%= f.input :text %>
-<%= f.input :line_type %>
-<%= f.input :emotion %>
+<%= f.input(
+  :emotion,
+  as: :select,
+  collection: Line.emotions.keys.map {|k| [k.humanize, k]},
+)%>
+
+<!-- show preview? -->
+<!-- add required -->

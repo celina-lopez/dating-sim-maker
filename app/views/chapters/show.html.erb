@@ -4,15 +4,11 @@
 <%= link_to "New Line", new_story_chapter_line_path(@story, @chapter), class: "btn btn-dating" %>
 
 <% @lines.each do |line| %>
-  <div id="line-<%= line.id %>" class="card text-white bg-lavender my-3">
+  <div class="card text-white bg-lavender my-3">
     <div class="card-body">
-      <p class="card-text"><%= line.text %></p>
+      <p class="card-text"><%= line.speaker_name %>: <%= line.text %></p>
     </div>
   </div>
 <% end %>
 
-<script type="text/javascript">
-  $('#character').click(function(){
-    window.location.href = "<%= characters_path %>";
-  });
-</script>
+<!-- pagination -->
