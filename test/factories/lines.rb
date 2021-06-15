@@ -3,7 +3,7 @@
 # Table name: lines
 #
 #  id            :bigint           not null, primary key
-#  emotion       :integer          default(0), not null
+#  emotion       :integer          default("default"), not null
 #  line_type     :integer          default("chapter"), not null
 #  order         :integer          not null
 #  speakeable    :string           not null

@@ -52,3 +52,34 @@ h1, h2, h3, h4 {
 .card.link:hover {
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
+
+
+.hidden {
+  display: none;
+}
+.hover-hidden:hover, .hover-hidden:hover .hidden{
+  display: block;
+  cursor: pointer;
+}
+
+.flip {                 
+  transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  display: inline-block;
+}
+
+.arrow {
+  font-size: xxx-large
+}
+
+
+a .arrow {
+  color: #8bcdcd;
+}
+
+a .arrow:hover {
+  filter: brightness(.8)
+}

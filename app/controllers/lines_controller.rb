@@ -2,7 +2,7 @@ class LinesController < ApplicationController
   before_action :authenticate!
   before_action :set_story
   before_action :set_chapter
-  before_action :set_lines, except: [:new, :create]
+  before_action :set_line, except: [:new, :create]
 
   def new
     @line = Line.new
@@ -12,7 +12,7 @@ class LinesController < ApplicationController
   def create
     @line = Line.new(line_params.merge({ chapter: @chapter }))
     if @line.save
-      respond_with(@line, location: -> { story_chapter_path(@chapter) })
+      respond_with(@line, location: -> { story_chapter_path(@story, @chapter) })
     else
       render :new
     end

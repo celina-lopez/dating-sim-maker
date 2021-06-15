@@ -4,4 +4,5 @@
   :status,
   as: :select,
   collection: Story.statuses.keys.map {|k| [k.humanize, k]},
+  required: true,
 )%>

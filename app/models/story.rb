@@ -15,9 +15,11 @@
 #  index_stories_on_user_id  (user_id)
 #
 class Story < ApplicationRecord
-  has_many :characters
   belongs_to :user
   has_many :chapters
+
+  has_many :storycharacters
+  has_many :characters, through: :storycharacters
 
   enum status: {
     draft: 0,
