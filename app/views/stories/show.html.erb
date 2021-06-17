@@ -1,4 +1,4 @@
-<h1><%= @story.title %></h1>
+<%= render "layouts/title_header", title: @story.title %>
 <p><%= @story.description %></p>
 
 <div class="row">
@@ -21,7 +21,7 @@
   </div>
   <!-- activate characters for story -->
   <div class="col-auto">
-    <div id="chapter" class="link card text-white bg-lavender mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
+    <div id="chapter" class="link card bg-yellow mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
       <div class="card-header text-center">─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───</div>
       <div class="card-body">
         <h5 class="card-title">
@@ -35,7 +35,7 @@
     </div>
   </div>
   <div class="col-auto">
-    <div id="story" class="link card text-white bg-lavender mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
+    <div id="story" class="link card bg-orange text-white mb-3" style="width: 18rem; height: 14rem;cursor: pointer;">
       <div class="card-header text-center">─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───</div>
       <div class="card-body">
         <h5 class="card-title"> <i class="fas fa-chess-knight fa-flip-horizontal"></i> Edit Dating Sim <i class="fas fa-chess-knight"></i></h5>
@@ -46,6 +46,8 @@
     </div>
   </div>
 </div>
+
+<%= link_to "back", stories_path %>
 
 <script type="text/javascript">
   $('#character').click(function(){

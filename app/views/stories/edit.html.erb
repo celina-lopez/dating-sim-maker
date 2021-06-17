@@ -1,4 +1,4 @@
-<h1>Edit Dating Sim</h1>
+<%= render "layouts/title_header", title: "Edit Dating Sim" %>
 <%= simple_form_for(@story, html: { 'data-parsley-validate': true}) do |f| %>
   <%= render "form", f: f %>
   <div class="form-actions pb-2">

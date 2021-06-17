@@ -41,4 +41,8 @@ class Line < ApplicationRecord
       Character.find(speakeable_id).name
     end
   end
+
+  def mc?
+    speakeable_id == 0
+  end
 end

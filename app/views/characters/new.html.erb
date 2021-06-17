@@ -1,4 +1,4 @@
-<h1>New Character</h1>
+<%= render "layouts/title_header", title: "New Character" %>
 <%= simple_form_for(@character, html: { 'data-parsley-validate': true}) do |f| %>
   <%= render "form", f: f %>
   <div class="form-actions pb-2">

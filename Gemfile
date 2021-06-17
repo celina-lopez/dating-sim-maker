@@ -10,7 +10,7 @@ gem "light-service", "~> 0.14.0"
 gem 'annotate'
 gem "simple_form", "~> 5.0"
 gem "pundit", "~> 2.1"
-gem "kaminari", "~> 1.2"
+gem "kaminari"
 gem "jquery-rails", "~> 4.3"
 gem "httparty", "~> 0.17"
 gem "bootstrap", "~> 4.4"

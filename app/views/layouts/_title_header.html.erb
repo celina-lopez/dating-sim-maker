@@ -1,0 +1,3 @@
+<% content_for(:title, title) %>
+<% header_size ||= 1 %>
+<%= content_tag("h#{header_size}", content_for(:title)) %>

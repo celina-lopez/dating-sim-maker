@@ -4,7 +4,12 @@ class ChaptersController < ApplicationController
   before_action :set_chapter, except: [:index, :new, :create]
 
   def index
+    page = params[:page] || 1
     @chapters = @story.chapters
+
+    @chapters = @chapters
+      .page(page)
+      .per(10)
   end
 
   def new

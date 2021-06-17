@@ -100,6 +100,20 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
 
+  config.wrappers :pretty_switch, tag: "fieldset", class: "form-group", error_class: "form-group-invalid", valid_class: "form-group-valid" do |b|
+    b.use :html5
+    b.optional :readonly
+    b.wrapper :form_check_wrapper, tag: "div", class: "pretty p-switch p-fill" do |bb|
+      bb.use :input, class: "form-check-input", error_class: "is-invalid", valid_class: "primary-valid"
+      bb.wrapper :form_label_wrapper, tag: "div", class: "state p-primary" do |bx|
+        bx.use :label, class: "form-check-label"
+      end
+      bb.use :full_error, wrap_with: { tag: "div", class: "invalid-feedback" }
+      bb.use :hint, wrap_with: { tag: "small", class: "form-text text-muted" }
+    end
+  end
+
+
   # vertical input for inline radio buttons and check boxes
   config.wrappers :vertical_collection_inline, item_wrapper_class: 'form-check form-check-inline', item_label_class: 'form-check-label', tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5

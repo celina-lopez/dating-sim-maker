@@ -1,8 +1,7 @@
 <div class="bg-pink border-r" id="sidebar-wrapper">
   <div class="sidebar-heading">Dating Sim Maker</div>
   <div class="list-group list-group-flush">
-    <a href="<%= root_url %>" class="<%= current_page?(root_url) ? "active" : "" %> custom-list-group-item custom-list-group-item-action bg-pink">Dashboard</a>
     <a href="<%= stories_url %>" class="<%= controller_name == "stories" ? 'active' : '' %> custom-list-group-item custom-list-group-item-action bg-pink">Story</a>
-    <a href="#" class="custom-list-group-item custom-list-group-item-action bg-pink">Character</a>
+    <a href="<%= characters_path %>" class="custom-list-group-item custom-list-group-item-action bg-pink">Characters</a>
   </div>
 </div>

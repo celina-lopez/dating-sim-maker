@@ -1,28 +1,25 @@
-<h1><%= @story.title %> - <%= @chapter.title %></h1>
-
+<%= render "layouts/title_header", title: "#{@story.title} - #{@chapter.title}" %>
 <button class="btn btn-dating">Edit</button>
 <%= link_to "New Line", new_story_chapter_line_path(@story, @chapter), class: "btn btn-dating" %>
 
 <% @lines.each do |line| %>
-  <div id="line-<%= line.id %>" class="card text-white bg-lavender my-3 hover-hidden">
-    <div class="card-body">
-      <div class="row card-text">
-        <div class="col">
-          <%= line.speaker_name %>: <%= line.text %>    
-        </div>
-        <div class="col-auto">
-          <a class="hidden text-white">
-            <i class="fas fa-pen-fancy"></i>
-          </a>
-        </div>
-      </div>
+  <div class="card border-0 my-3 hover-hidden">
+    <div class="row">
+    <div class="col-auto">
+      <span class="<%= line.mc? ? "text-danger" : "" %>"><%= line.speaker_name %></span>:
+    </div>
+    <div class="col">
+      <%= line.text %>
+    </div>
+    <div class="col-auto">
+      <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
+        <i class="fas fa-pen-fancy"></i>
+      </a>
     </div>
   </div>
-  <script type="text/javascript">
-    $('#line-<%= line.id %>').click(function(){
-      window.location.href = "<%= edit_story_chapter_line_path(@story, @chapter, line) %>";
-    });
-  </script>
+  </div>
 <% end %>
+
+<%= link_to "back", story_chapters_path(@story) %>
 
 <!-- pagination -->
