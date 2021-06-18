@@ -4,6 +4,11 @@ class StoriesController < ApplicationController
 
   def index
     @stories = current_user.stories
+    page = params[:page] || 1
+
+    @stories = @stories
+      .page(page)
+      .per(10)
   end
 
   def new

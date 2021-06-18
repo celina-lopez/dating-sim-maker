@@ -11,4 +11,16 @@ module ApplicationHelper
       "bg-hot-pink text-white"
     end
   end
+
+  def clean_array(param)
+    param&.filter { |k| k.present? }
+  end
+
+  def clean_jsonb(param)
+    if param.present?
+      JSON.parse(param)
+    elsif param == ""
+      {}
+    end
+  end
 end

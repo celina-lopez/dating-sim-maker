@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
     t.string "name", null: false
     t.text "biography"
     t.bigint "user_id", null: false
+    t.jsonb "details", null: false
+    t.jsonb "emotions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_characters_on_user_id"

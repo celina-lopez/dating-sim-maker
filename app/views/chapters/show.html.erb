@@ -1,7 +1,4 @@
 <%= render "layouts/title_header", title: "#{@story.title} - #{@chapter.title}" %>
-<button class="btn btn-dating">Edit</button>
-<%= link_to "New Line", new_story_chapter_line_path(@story, @chapter), class: "btn btn-dating" %>
-
 <% @lines.each do |line| %>
   <div class="card border-0 my-3 hover-hidden">
     <div class="row">
@@ -20,6 +17,8 @@
   </div>
 <% end %>
 
-<%= link_to "back", story_chapters_path(@story) %>
+<%= link_to "back", story_chapters_path(@story) %> |
+<%= link_to "edit chapter", edit_story_chapter_path(@story, @chapter) %> |
+<%= link_to "new line", new_story_chapter_line_path(@story, @chapter) %>
 
 <!-- pagination -->

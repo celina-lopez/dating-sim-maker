@@ -4,6 +4,8 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.text :biography
       t.belongs_to :user, null: false
+      t.jsonb :details, null: false
+      t.jsonb :emotions
 
       t.timestamps
     end

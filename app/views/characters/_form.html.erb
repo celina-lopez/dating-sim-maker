@@ -1,2 +1,36 @@
 <%= f.input :name, required: true %>
 <%= f.input :biography %>
+<!-- details -->
+<%= f.input(
+  :zodiac_sign,
+  as: :select,
+  collection: Character::ZODIAC_SIGNS,
+  selected: f.object.details["zodiac_sign"]
+)%>
+<div class="row">
+  <div class="col-6 pr-0">
+  <%= f.input(
+    :height,
+    placeholder: "Height",
+    as: :integer,
+    label: false,
+    input_html: {
+      value: f.object.details["height"],
+      max: 240,
+      min: 0,
+    }
+  )%>
+  </div>
+  <div class="col-6 pt-3">cm</div>
+</div>
+<%= f.input :likes, input_html: { value: f.object.details["likes"] } %>
+
+<h4>Emotions!</h4>
+<% Character::EMOTIONS.each do |emotion, font_awesome| %>
+  <%= emotion.capitalize %> picture url <i class="<%= font_awesome %>"></i>
+  <%= f.input(
+    emotion,
+    label: false,
+    input_html: { value: f.object.emotions[emotion.to_s] }
+  )%>
+<% end %>

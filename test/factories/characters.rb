@@ -4,6 +4,8 @@
 #
 #  id         :bigint           not null, primary key
 #  biography  :text
+#  details    :jsonb            not null
+#  emotions   :jsonb
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
