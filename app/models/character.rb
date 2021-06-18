@@ -16,5 +16,6 @@
 class Character < ApplicationRecord
   belongs_to :user
 
-  has_many :stories
+  has_many :storycharacters
+  has_many :stories, through: :storycharacters
 end

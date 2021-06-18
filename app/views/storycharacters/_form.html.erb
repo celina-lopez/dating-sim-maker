@@ -1,5 +1,6 @@
 <%= f.input(
   :character_id,
+  required: true,
   as: :select,
   collection: current_user.characters,
   label_method: :name,

@@ -4,6 +4,11 @@ class StorycharactersController < ApplicationController
 
   def index
     @characters = @story.characters
+    page = params[:page] || 1
+
+    @characters = @characters
+      .page(page)
+      .per(10)
   end
 
   def new

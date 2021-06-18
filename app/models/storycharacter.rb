@@ -16,4 +16,6 @@
 class Storycharacter < ApplicationRecord
   belongs_to :character
   belongs_to :story
+
+  validates_uniqueness_of :character_id, scope: [:story_id]
 end

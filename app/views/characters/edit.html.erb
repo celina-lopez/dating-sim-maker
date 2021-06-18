@@ -1,5 +1,7 @@
 <%= render "layouts/title_header", title: "Edit #{@character.name}" %>
 <%= simple_form_for(@character, html: { 'data-parsley-validate': true}) do |f| %>
+
+  Editing for: <%= @character.stories.size %> stories
   <%= render "form", f: f %>
 
   <div class="form-actions pb-2">

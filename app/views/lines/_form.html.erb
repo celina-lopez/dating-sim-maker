@@ -1,16 +1,18 @@
-<%= f.input :order %>
+<%= f.input :order, required: true %>
 <!-- hide order -->
 <%= f.input(
   :speakeable_id,
+  required: true,
   as: :select,
   collection: [
     ["MC", 0],
     *current_user.characters.map{ |c| [c.name, c.id] }
   ]
 )%>
-<%= f.input :text %>
+<%= f.input :text, required: true %>
 <%= f.input(
   :emotion,
+  required: true,
   as: :select,
   collection: Line.emotions.keys.map {|k| [k.humanize, k]},
 )%>

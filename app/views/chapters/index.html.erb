@@ -18,5 +18,7 @@
   <% end %>
 </div>
 
+<%= paginate @chapters, theme: 'bootstrap4' %>
+
 <%= link_to "back", story_path(@story) %> |
 <%= link_to "new", new_story_chapter_path %>
