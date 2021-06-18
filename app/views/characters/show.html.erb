@@ -16,35 +16,29 @@
     <div class="card">
       <div class="card-body">
         <div class="row">
-          <div class="col-3">
+          <div class="col-md-3">
             Status:
           </div>
-          <div class="col-9">
+          <div class="col-md-9">
             Single
           </div>
-          <div class="col-3">
-            Here for:
-          </div>
-          <div class="col-9">
-            Friends
-          </div>
-          <div class="col-3">
+          <div class="col-md-3">
             Zodiac Sign:
           </div>
-          <div class="col-9">
-            Libra
+          <div class="col-md-9">
+            <%= @character.details["zodiac_sign"] %>
           </div>
-          <div class="col-3">
+          <div class="col-md-3">
             Height:
           </div>
-          <div class="col-9">
-            5'7"
+          <div class="col-md-9">
+            <%= @character.details["height"] %> cm
           </div>
-          <div class="col-3">
+          <div class="col-md-3">
             Likes:
           </div>
-          <div class="col-9">
-            dogs
+          <div class="col-md-9">
+            <%= @character.details["likes"] %>
           </div>
         </div>
       </div>
