@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
   create_table "lines", force: :cascade do |t|
     t.bigint "chapter_id", null: false
     t.text "text", null: false
-    t.string "speakeable", null: false
     t.integer "speakeable_id", null: false
     t.integer "order", null: false
     t.integer "line_type", default: 0, null: false
@@ -52,15 +51,12 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
   end
 
   create_table "options", force: :cascade do |t|
-    t.bigint "chapter_id", null: false
-    t.text "question", null: false
-    t.integer "order", null: false
+    t.bigint "line_id", null: false
     t.string "answers", default: [], null: false, array: true
     t.integer "weights", default: [], null: false, array: true
-    t.integer "emotion", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["chapter_id"], name: "index_options_on_chapter_id"
+    t.index ["line_id"], name: "index_options_on_line_id"
   end
 
   create_table "relationships", force: :cascade do |t|

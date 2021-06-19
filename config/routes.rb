@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :stories do 
   	resources :chapters do
       resources :lines
+      resources :options
     end
     resources :storycharacters
   end

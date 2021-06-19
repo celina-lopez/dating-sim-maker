@@ -17,5 +17,15 @@
   collection: Line.emotions.keys.map {|k| [k.humanize, k]},
 )%>
 
+
+<%= f.simple_fields_for(:option) do |option_f| %>
+  <% Option::OPTIONS.each do |answer| %>
+    <%= option_f.input answer, required: true %>
+  <% end %>
+
+  <% Option::WEIGHTS.each do |weight| %>
+    <%= option_f.input weight, required: true %>
+  <% end %> 
+<% end %>
 <!-- show preview? -->
 <!-- add required -->

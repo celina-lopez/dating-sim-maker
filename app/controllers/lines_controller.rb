@@ -12,6 +12,8 @@ class LinesController < ApplicationController
   def create
     @line = Line.new(line_params.merge({ chapter: @chapter }))
     if @line.save
+      # active record
+      @option = Option.create(option_params.merge({ line: @line }))
       respond_with(@line, location: -> { story_chapter_path(@story, @chapter) })
     else
       render :new
@@ -50,20 +52,24 @@ class LinesController < ApplicationController
     end
 
     def line_params
-      if params[:line][:speakeable_id] == 0
-        params[:line][:speakeable] = "User"
-      else
-        params[:line][:speakeable] = "Character"
-      end
-
       params.require(:line).permit(
         :id,
      		:order,
      		:line_type,
      		:emotion,
         :text,
-        :speakeable,
         :speakeable_id,
+      )
+    end
+
+    def option_params
+      params[:option] = {}
+      params[:option][:answers] = Answers::BuildAnswers.execute(params: params[:line][:option]).answers
+      params[:option][:weights] = Answers::BuildWeights.execute(params: params[:line][:option]).weights
+
+      params.require(:option).permit(
+        weights: [],
+        answers: [],
       )
     end
 end

@@ -3,10 +3,9 @@
 # Table name: lines
 #
 #  id            :bigint           not null, primary key
-#  emotion       :integer          default("default"), not null
+#  emotion       :integer          default(0), not null
 #  line_type     :integer          default("chapter"), not null
 #  order         :integer          not null
-#  speakeable    :string           not null
 #  text          :text             not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -26,23 +25,23 @@ class Line < ApplicationRecord
   	option: 1,
   }
 
-  enum emotion: {
-  	default: 0,
-  }
+  EMOTIONS = Character::EMOTIONS.keys.each_with_object({}).with_index do |(el, acc), index|
+    acc[el] = index
+  end
+  enum emotion: EMOTIONS
 
   belongs_to :option, optional: true
   belongs_to :chapter
 
+  def mc?
+    speakeable_id == 0
+  end
 
   def speaker_name
-    if speakeable_id == 0
+    if mc?
       "MC"
     else
       Character.find(speakeable_id).name
     end
-  end
-
-  def mc?
-    speakeable_id == 0
   end
 end

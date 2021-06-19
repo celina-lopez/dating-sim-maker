@@ -20,6 +20,7 @@ class Chapter < ApplicationRecord
 
   belongs_to :story
   has_many :lines
+  has_many :options
 
   enum chap_type: {
   	default: 0,
