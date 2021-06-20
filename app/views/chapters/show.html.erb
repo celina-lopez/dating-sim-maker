@@ -1,37 +1,66 @@
 <%= render "layouts/title_header", title: "#{@story.title} - #{@chapter.title}" %>
 <% @lines.each do |line| %>
-  <div class="card border-0 my-3 hover-hidden">
-    <div class="row">
-      <div class="col-auto">
-        <span class="<%= line.mc? ? "text-danger" : "" %>">
-          <%= line.speaker_name %>  
-        </span>:
+    <!-- figure out weirdness later -->
+    <!-- text message bubble, look up css -->
+  <div class="my-3 hover-hidden">
+    <% if line.mc? %>
+      <div class="row">
+        <div class="col-auto ml-auto">
+          <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
+            <i class="fas fa-pen-fancy"></i> edit
+          </a>
+        </div>
+        <div class="col-6">
+          <div class="card bg-lavender text-white">
+            <div class="m-3">
+              <%= line.text %>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto" style="align-self: flex-end;">
+          profile
+        </div>
       </div>
-      <div class="col"><%= line.text %></div>
-      <div class="col-auto">
-        <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
-          <i class="fas fa-pen-fancy"></i>
-        </a>
+    <% else %>
+      <div class="row">
+        <div class="col-auto" style="align-self: flex-end;">
+          EMO
+        </div>
+        <div class="col-6">
+          <b><%= line.speaker_name %></b><br/>
+          <div class="card bg-hot-pink text-white">
+            <div class="m-3">
+              <%= line.text %>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto">
+          <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
+            <i class="fas fa-pen-fancy"></i> edit
+          </a>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
   <% if line.option.present? %>
-    <div class="card border-0 my-3 hover-hidden">
-      <div class="row">
-        <div class="col">OPTIONS: </div>
-        <% line.option.answers.each do |answer| %>
-          <div class="col text-center">
-            <span class="badge badge-info">
-              <%= answer %>
-            </span>
-          </div>
-        <% end %>
-      </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <% line.option.answers.each do |answer| %>
+        <div class="col-auto text-center">
+          <span class="badge bg-white border px-4 py-2" style="border-radius: 20px;">
+            <%= answer %>
+          </span>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>
 
-<%= link_to "back", story_chapters_path(@story) %> |
-<%= link_to "edit chapter", edit_story_chapter_path(@story, @chapter) %> |
-<%= link_to "new line", new_story_chapter_line_path(@story, @chapter) %>
-<!-- pagination -->
+<%= paginate @lines, theme: 'bootstrap4' %>
+<div class="my-4">
+  <%= link_to "back", story_chapters_path(@story) %> |
+  <%= link_to "edit chapter", edit_story_chapter_path(@story, @chapter) %> |
+  <%= link_to "new line", new_story_chapter_line_path(@story, @chapter) %>
+</div>
+
+<!-- option after line -->

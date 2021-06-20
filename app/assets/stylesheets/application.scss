@@ -20,6 +20,7 @@
 body {
   font-family: 'Nunito', sans-serif;
   color: #8675a9;
+  background-color: #fef5f5; 
 }
 
 h1, h2, h3, h4 {
@@ -63,6 +64,11 @@ h1, h2, h3, h4 {
 
 .card.link:hover {
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+}
+
+.card {
+  border-radius: 20px;
+  box-shadow: 0 0.125rem 0.25rem #00000013;
 }
 
 

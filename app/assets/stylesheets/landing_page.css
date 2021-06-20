@@ -40,6 +40,10 @@
   }
 }
 
+.border-b {
+  border-bottom: 1px solid #FFC0CB;
+}
+
 .custom-list-group-item {
     position: relative;
     display: block;
@@ -51,8 +55,12 @@
     border-width: 0 0 1px;
 }
 
-.bg-pink {
+.bg-baby-pink {
     background-color: #fef5f5 !important;
+}
+
+.bg-pink {
+    background-color: #ffd6d6 !important;
 }
 
 .list-group .bg-pink:hover{
@@ -60,8 +68,7 @@
 }
 
 .list-group .active, .list-group .active:hover {
-  background-color: #8bcdcd !important;
-  color: #fcf876;
+  background-color: #fef5f5 !important;
   border: none;
 }
 
@@ -82,5 +89,4 @@
 
 .navbar-pink .navbar-nav .active > .nav-link, .navbar-pink a {
   color: #8675a9;
-  border: 1px solid #FFC0CB;
 }
