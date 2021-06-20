@@ -25,6 +25,9 @@ class StorycharactersController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   private
     def set_story
       @story = Story.find(params[:story_id])

@@ -11,6 +11,7 @@ gem 'annotate'
 gem "simple_form", "~> 5.0"
 gem "pundit", "~> 2.1"
 gem "kaminari"
+gem "attr_encrypted", "~> 3.1"
 gem "jquery-rails", "~> 4.3"
 gem "httparty", "~> 0.17"
 gem "bootstrap", "~> 4.4"

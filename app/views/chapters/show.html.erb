@@ -2,23 +2,36 @@
 <% @lines.each do |line| %>
   <div class="card border-0 my-3 hover-hidden">
     <div class="row">
-    <div class="col-auto">
-      <span class="<%= line.mc? ? "text-danger" : "" %>"><%= line.speaker_name %></span>:
-    </div>
-    <div class="col">
-      <%= line.text %>
-    </div>
-    <div class="col-auto">
-      <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
-        <i class="fas fa-pen-fancy"></i>
-      </a>
+      <div class="col-auto">
+        <span class="<%= line.mc? ? "text-danger" : "" %>">
+          <%= line.speaker_name %>  
+        </span>:
+      </div>
+      <div class="col"><%= line.text %></div>
+      <div class="col-auto">
+        <a class="hidden" href="<%= edit_story_chapter_line_path(@story, @chapter, line) %>">
+          <i class="fas fa-pen-fancy"></i>
+        </a>
+      </div>
     </div>
   </div>
-  </div>
+  <% if line.option.present? %>
+    <div class="card border-0 my-3 hover-hidden">
+      <div class="row">
+        <div class="col">OPTIONS: </div>
+        <% line.option.answers.each do |answer| %>
+          <div class="col text-center">
+            <span class="badge badge-info">
+              <%= answer %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <%= link_to "back", story_chapters_path(@story) %> |
 <%= link_to "edit chapter", edit_story_chapter_path(@story, @chapter) %> |
-<%= link_to "new line", new_story_chapter_line_path(@story, @chapter) %> |
-<%= link_to "new option", new_story_chapter_option_path(@story, @chapter) %>
+<%= link_to "new line", new_story_chapter_line_path(@story, @chapter) %>
 <!-- pagination -->

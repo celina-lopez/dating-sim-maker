@@ -1,5 +1,3 @@
-<%= f.input :order, required: true %>
-<!-- hide order -->
 <%= f.input(
   :speakeable_id,
   required: true,
@@ -9,23 +7,37 @@
     *current_user.characters.map{ |c| [c.name, c.id] }
   ]
 )%>
-<%= f.input :text, required: true %>
+<%= f.input :text, label: "Text/Question", required: true %>
 <%= f.input(
   :emotion,
   required: true,
   as: :select,
   collection: Line.emotions.keys.map {|k| [k.humanize, k]},
 )%>
+<!-- radio buttons? - of fontawesome emoji -->
 
-
-<%= f.simple_fields_for(:option) do |option_f| %>
-  <% Option::OPTIONS.each do |answer| %>
-    <%= option_f.input answer, required: true %>
-  <% end %>
-
-  <% Option::WEIGHTS.each do |weight| %>
-    <%= option_f.input weight, required: true %>
-  <% end %> 
-<% end %>
+<div class="py-2">
+  <a id="option-button" class="button default ok" href="#option-answers" data-toggle="collapse" aria-expanded="false">
+    make this a question
+  </a>
+  <div id="option-answers" class="collapse mt-4">
+    <%= f.simple_fields_for(:option) do |option_f| %>
+      <% Option::OPTIONS.zip(Option::WEIGHTS).each do |answer, weight| %>
+        <div class="row">
+          <div class="col-10">
+            <%= option_f.input answer, required: true %>
+          </div>
+          <div class="col-2">
+            <%= option_f.input(
+              weight,
+              required: true,
+              as: :integer,
+              input_html: { max: 10, min: -10 },
+            )%>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 <!-- show preview? -->
-<!-- add required -->

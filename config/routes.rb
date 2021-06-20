@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   root to: "pages#home"
 
-  resources :users
+  resources :users, only: [:edit, :create, :new, :show]
 
   resources :stories do 
   	resources :chapters do
-      resources :lines
-      resources :options
+      resources :lines, except: [:show]
     end
     resources :storycharacters
   end
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create] do 
     collection do 
-      delete :destroy
+      delete :destroy, only: [:index, :new, :create, :destroy]
     end
   end
 end

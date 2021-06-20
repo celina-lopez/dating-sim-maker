@@ -25,10 +25,10 @@ class Character < ApplicationRecord
   	flirt: "far fa-grin-hearts",
   	confused: "far fa-flushed",
   }
-
   DETAILS = [:zodiac_sign, :height, :likes]
-  attr_accessor(*DETAILS)
-  attr_accessor(*EMOTIONS.keys)
+
+  attr_accessor(*DETAILS, *EMOTIONS.keys, :story_id)
+
   belongs_to :user
 
   has_many :storycharacters

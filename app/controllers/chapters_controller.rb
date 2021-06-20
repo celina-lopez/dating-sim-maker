@@ -5,7 +5,7 @@ class ChaptersController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @chapters = @story.chapters
+    @chapters = @story.chapters.order(:order_number)
 
     @chapters = @chapters
       .page(page)
@@ -19,6 +19,10 @@ class ChaptersController < ApplicationController
 
   def create
     @chapter = Chapter.new(chapter_params.merge({ story: @story }))
+
+    order_number = Chapters::BuildOrder.execute(story: @story, chapter: @chapter).order_number
+    @chapter.update_attributes(order_number: order_number)
+
     if @chapter.save
       respond_with(@chapter, location: -> { story_chapters_path })
     else
@@ -27,7 +31,12 @@ class ChaptersController < ApplicationController
   end
 
   def show
-    @lines = @chapter.lines
+    @lines = @chapter.lines.includes(:option).order(:order)
+    page = params[:page] || 1
+
+    @lines = @lines
+      .page(page)
+      .per(20)
   end
 
   def update
@@ -60,11 +69,9 @@ class ChaptersController < ApplicationController
       end
 
       params.require(:chapter).permit(
-        :id,
-     		:order_number,
-     		:status,
-     		:chap_type,
-     		:title,
+        :status,
+        :chap_type,
+        :title,
       )
     end
 end

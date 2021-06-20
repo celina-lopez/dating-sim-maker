@@ -17,10 +17,6 @@
   font-family: "Lobster", cursive;
 }
 
-#sidebar-wrapper .list-group {
-  width: 15rem;
-}
-
 #page-content-wrapper {
   min-width: 100vw;
 }
@@ -44,20 +40,11 @@
   }
 }
 
-.border-r {
-  border-right: 1px solid #FFC0CB;
-}
-
-.border-b {
-  border-bottom: 1px solid #FFC0CB;
-}
-
 .custom-list-group-item {
     position: relative;
     display: block;
     padding: 0.75rem 1.25rem;
     background-color: #fff;
-    border: 1px solid #FFC0CB;
 }
 
 .list-group-flush > .custom-list-group-item  {
@@ -95,4 +82,5 @@
 
 .navbar-pink .navbar-nav .active > .nav-link, .navbar-pink a {
   color: #8675a9;
+  border: 1px solid #FFC0CB;
 }

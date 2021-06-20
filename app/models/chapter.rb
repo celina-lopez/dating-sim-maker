@@ -24,7 +24,8 @@ class Chapter < ApplicationRecord
 
   enum chap_type: {
   	default: 0,
-  	ending: 1,
+    progress_ending: 1,
+  	character_ending: 2,
   }
 
   enum status: {

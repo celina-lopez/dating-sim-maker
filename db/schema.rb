@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
     t.integer "speakeable_id", null: false
     t.integer "order", null: false
     t.integer "line_type", default: 0, null: false
-    t.integer "option_id"
     t.integer "emotion", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,7 +90,8 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "name"
-    t.string "password", null: false
+    t.string "encrypted_password", null: false
+    t.string "encrypted_password_iv", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

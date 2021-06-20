@@ -61,6 +61,8 @@ GEM
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
+    attr_encrypted (3.1.0)
+      encryptor (~> 3.0.0)
     autoprefixer-rails (10.2.5.1)
       execjs (> 0)
     bindex (0.8.1)
@@ -92,6 +94,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    encryptor (3.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
     factory_bot (5.2.0)
@@ -287,6 +290,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  attr_encrypted (~> 3.1)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4)
   byebug

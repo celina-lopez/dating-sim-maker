@@ -3,7 +3,7 @@ class LinesController < ApplicationController
   before_action :set_story
   before_action :set_chapter
   before_action :set_line, except: [:new, :create]
-
+# bulk update for line ordering
   def new
     @line = Line.new
     respond_with(@line)
@@ -11,20 +11,22 @@ class LinesController < ApplicationController
 
   def create
     @line = Line.new(line_params.merge({ chapter: @chapter }))
-    if @line.save
-      # active record
-      @option = Option.create(option_params.merge({ line: @line }))
-      respond_with(@line, location: -> { story_chapter_path(@story, @chapter) })
-    else
-      render :new
-    end
-  end
 
-  def show
+    order_number = Lines::BuildOrder.execute(chapter: @chapter, line: @line).order_number
+    @line.update_attributes(order: order_number)
+
+    ActiveRecord::Base.transaction do
+      @line.save!
+      if option_params.select{ |k, v| v.present? }.present?
+        @option = Option.create(option_params.merge({ line: @line }))
+      end
+      respond_with(@line, location: -> { story_chapter_path(@story, @chapter) })
+    end
+  rescue
+    redirect_to new_story_chapter_line_path(@story, @chapter, Line.new), alert: "Failed to save line"
   end
 
   def update
-    # add order number job
     if @line.update(line_params)
       respond_with(@line, location: -> { story_chapter_lines_path })
     else
@@ -53,10 +55,8 @@ class LinesController < ApplicationController
 
     def line_params
       params.require(:line).permit(
-        :id,
-     		:order,
-     		:line_type,
-     		:emotion,
+        :line_type,
+        :emotion,
         :text,
         :speakeable_id,
       )

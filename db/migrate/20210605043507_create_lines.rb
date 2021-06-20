@@ -6,7 +6,6 @@ class CreateLines < ActiveRecord::Migration[6.0]
       t.integer :speakeable_id, null: false
       t.integer :order, null: false
       t.integer :line_type, null: false, default: 0
-      t.integer :option_id
       t.integer :emotion, null: false, default: 0
       t.timestamps
     end
