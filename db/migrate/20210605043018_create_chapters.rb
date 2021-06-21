@@ -6,8 +6,9 @@ class CreateChapters < ActiveRecord::Migration[6.0]
       t.integer :status, null: false, default: 0
       t.integer :chap_type, null: false, default: 0
       t.string :title, null: false
-      t.integer :love_meter_ending_condition
       t.string :background_image_url
+      t.integer :character_condition
+      t.integer :character_ending
 
       t.timestamps
     end

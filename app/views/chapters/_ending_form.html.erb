@@ -1,0 +1,33 @@
+<%= f.input :title, label: "Ending Title", required: true %>
+<%= f.input :background_image_url %>
+<%= f.input(
+  :status,
+  as: :select,
+  required: true,
+  collection: Chapter.statuses.keys.map {|k| [k.humanize, k]},
+)%>
+<%= f.input(
+  :chap_type,
+  as: :select,
+  required: true,
+  collection: Chapter.ending_types.map {|k|  [k.humanize, k]},
+)%>
+
+<div class="d-none" id="story_chapter_chap_type">
+  <%= f.input(
+    :character_ending,
+    as: :select,
+    collection: @story.characters,
+    label_method: :name,
+    value_method: :id,
+  )%>
+  <%= f.input :character_condition, input_html: { max: 200 } %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    if ($("#story_chapter_chap_type").val() == "character_ending"){
+      $("#character_ending_inputs").removeClass("d-none")
+    }
+  });
+</script>

@@ -5,9 +5,6 @@
   required: true,
   collection: Chapter.statuses.keys.map {|k| [k.humanize, k]},
 )%>
-<%= f.input(
-  :chap_type,
-  as: :select,
-  required: true,
-  collection: Chapter.chap_types.keys.map {|k| [k.humanize, k]},
-)%>
+
+<%= f.input :chap_type, as: :hidden, input_html: { value: "default" } %>
+<!-- delete chap type bc it would always be normal -->

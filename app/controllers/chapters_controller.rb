@@ -54,6 +54,9 @@ class ChaptersController < ApplicationController
   def destroy
   end
 
+  def new_ending
+  end
+
   private
     def set_story
       @story = Story.find(params[:story_id])

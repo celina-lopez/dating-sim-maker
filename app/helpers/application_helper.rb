@@ -4,7 +4,7 @@ module ApplicationHelper
     if number == 0
       "text-white bg-lavender"
     elsif number == 1
-      "bg-yellow"
+      "bg-yellow text-white"
     elsif number == 2
       "bg-orange text-white"
     else

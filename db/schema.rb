@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 2021_06_07_041810) do
     t.integer "status", default: 0, null: false
     t.integer "chap_type", default: 0, null: false
     t.string "title", null: false
+    t.string "background_image_url"
+    t.integer "character_condition"
+    t.integer "character_ending"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["story_id"], name: "index_chapters_on_story_id"
