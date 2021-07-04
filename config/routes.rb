@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index, :destroy]
 
-  resources :stories do 
+  resources :stories do
   	resources :chapters do
       resources :lines, except: [:show]
     end
     resources :endings, except: [:index, :show]
     resources :storycharacters
+    resources :play, only: [:show]
   end
   resources :characters
 
