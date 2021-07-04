@@ -1,16 +1,8 @@
-class ChaptersController < ApplicationController
+class EndingsController < ApplicationController
+  # copied from chapter, udpate
   before_action :authenticate!
   before_action :set_story
-  before_action :set_chapter, except: [:index, :new, :create]
-
-  def index
-    page = params[:page] || 1
-    @chapters = @story.chapters.order(:order_number)
-
-    @chapters = @chapters
-      .page(page)
-      .per(10)
-  end
+  before_action :set_chapter, except: [:new, :create]
 
   def new
     @chapter = Chapter.new
@@ -28,15 +20,6 @@ class ChaptersController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @lines = @chapter.lines.includes(:option).order(:order)
-    page = params[:page] || 1
-
-    @lines = @lines
-      .page(page)
-      .per(20)
   end
 
   def update

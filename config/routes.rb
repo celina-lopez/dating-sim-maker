@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: "pages#home"
 
-  resources :users, only: [:edit, :create, :new, :show]
+  resources :users, except: [:index, :destroy]
 
   resources :stories do 
   	resources :chapters do
       resources :lines, except: [:show]
     end
+    resources :endings, except: [:index, :show]
     resources :storycharacters
   end
   resources :characters
