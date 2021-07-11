@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "pages#home"
+  get "/testing", to: "pages#testing"
 
   resources :users, except: [:index, :destroy]
 

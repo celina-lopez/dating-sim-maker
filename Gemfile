@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '2.6.3'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
@@ -27,6 +27,7 @@ gem "webpacker", "~> 4.2"
 gem "turbolinks", "~> 5.2"
 gem "jbuilder", "~> 2.10"
 gem 'bootsnap', '>= 1.4.2', require: false
+gem "foreman", "~> 0.87"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,3 +54,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
