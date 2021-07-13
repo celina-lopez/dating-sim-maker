@@ -72,6 +72,7 @@ class ChaptersController < ApplicationController
         :status,
         :chap_type,
         :title,
+        :background_image_url,
       )
     end
 end

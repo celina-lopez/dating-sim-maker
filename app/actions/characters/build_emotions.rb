@@ -9,7 +9,7 @@ module Characters
       params = context.params
       emotions = {}
 
-      Character::EMOTIONS.each do |emotion|
+      Character::EMOTIONS.keys.each do |emotion|
         if params[emotion].present?
           emotions[emotion] = params[emotion]
         end

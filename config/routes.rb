@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/testing", to: "pages#testing"
 
   resources :users, except: [:index, :destroy]
-
+  resources :play 
   resources :stories do
   	resources :chapters do
       resources :lines, except: [:show]

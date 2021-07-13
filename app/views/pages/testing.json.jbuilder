@@ -1,0 +1,1 @@
+Chapters::BuildJson.execute(story: Story.last, chapter: Story.last.chapters.first, json: json).chapter_json

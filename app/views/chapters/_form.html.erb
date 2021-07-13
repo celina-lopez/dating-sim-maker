@@ -6,5 +6,7 @@
   collection: Chapter.statuses.keys.map {|k| [k.humanize, k]},
 )%>
 
+<%= f.input :background_image_url %>
+
 <%= f.input :chap_type, as: :hidden, input_html: { value: "default" } %>
 <!-- delete chap type bc it would always be normal -->
