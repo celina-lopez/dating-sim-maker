@@ -11,6 +11,7 @@ module Chapters
       json.characters context.story.characters do |character|
         json.name character.name
         json.Defaultimage character.emotions["default"]
+        json.id character.id
       end
       json.lines context.chapter.lines do |line|
         json.characterId line.speakeable_id
