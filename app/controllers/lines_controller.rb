@@ -2,8 +2,18 @@ class LinesController < ApplicationController
   before_action :authenticate!
   before_action :set_story
   before_action :set_chapter
-  before_action :set_line, except: [:new, :create]
+  before_action :set_line, except: [:new, :create, :index]
 # bulk update for line ordering
+  
+  def index
+    @lines = @chapter.lines.includes(:option).order(:order)
+    page = params[:page] || 1
+
+    @lines = @lines
+      .page(page)
+      .per(20)
+  end
+
   def new
     @line = Line.new
     respond_with(@line)
@@ -20,7 +30,7 @@ class LinesController < ApplicationController
       if option_params.select{ |k, v| v.present? }.present?
         @option = Option.create(option_params.merge({ line: @line }))
       end
-      respond_with(@line, location: -> { story_chapter_path(@story, @chapter) })
+      respond_with(@line, location: -> { story_chapter_lines_path(@story, @chapter) })
     end
   rescue
     redirect_to new_story_chapter_line_path(@story, @chapter, Line.new), alert: "Failed to save line"

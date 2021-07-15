@@ -6,6 +6,7 @@
 #  description :text
 #  status      :integer          default("draft"), not null
 #  title       :string           not null
+#  uid         :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :bigint           not null
@@ -21,6 +22,9 @@ class Story < ApplicationRecord
   has_many :storycharacters
   has_many :characters, through: :storycharacters
 
+  validates_uniqueness_of :uid
+  before_save :rand_uid
+
   enum status: {
     draft: 0,
     published: 1,
@@ -33,5 +37,12 @@ class Story < ApplicationRecord
     else
       description 
     end
+  end
+
+  def rand_uid
+    all_array = ("A"..."Z").to_a + (1..9).to_a.map { |c| c.to_s }
+    all_array.delete("I")
+    all_array.delete("O")
+    self.uid = (0..6).map { |i| all_array.sample }.join
   end
 end

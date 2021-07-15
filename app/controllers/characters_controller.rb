@@ -19,14 +19,16 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params.merge({ user: current_user }))
     ActiveRecord::Base.transaction do
-      @character.save!
+      @character.save
       if params[:character][:story_id].present?
         @story_character = @character.storycharacters.create!(story_id: params[:character][:story_id])
-        redirect_url = story_storycharacters_path(params[:character][:story_id])
       end
-      redirect_url = characters_path
     end
-    redirect_to redirect_url
+    if params[:character][:story_id].present?
+      redirect_to story_storycharacters_path(params[:character][:story_id])
+    else
+      redirect_to characters_path
+    end
   rescue
     redirect_to new_character_path, alert: "Failed to save :("
   end

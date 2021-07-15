@@ -31,12 +31,6 @@ class ChaptersController < ApplicationController
   end
 
   def show
-    @lines = @chapter.lines.includes(:option).order(:order)
-    page = params[:page] || 1
-
-    @lines = @lines
-      .page(page)
-      .per(20)
   end
 
   def update
