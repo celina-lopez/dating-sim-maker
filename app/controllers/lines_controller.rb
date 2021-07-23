@@ -1,5 +1,5 @@
 class LinesController < ApplicationController
-  before_action :authenticate!
+  before_action :authenticate!, except: [:update_options]
   before_action :set_story
   before_action :set_chapter
   before_action :set_line, except: [:new, :create, :index]
@@ -42,6 +42,9 @@ class LinesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def update_options
   end
 
   def edit

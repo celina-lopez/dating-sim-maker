@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :play, only: [:index]
   resources :stories do
   	resources :chapters do
-      resources :lines, except: [:show]
+      resources :lines, except: [:show] do 
+        put :update_options
+      end
     end
     resources :endings, except: [:index, :show]
     resources :storycharacters
