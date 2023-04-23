@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title).presence || "Dating Sim Maker" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_pack_tag 'story-bundle' %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/c564821872.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"></link>
+    <script src="https://parsleyjs.org/dist/parsley.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Nunito&family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <%= render "layouts/sidebar" %>
+      <div id="page-content-wrapper">
+        <%= render "layouts/navbar" %>
+        <% if flash[:notice].present? %>
+          <div class="alert alert-info alert-dismissible m-2">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            <%= flash[:notice].html_safe %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+        <% if flash[:alert].present? %>
+          <div class="alert bg-hot-pink text-white alert-dismissible m-2">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <%= flash[:alert].html_safe %>
+            <% if flash.key?(:errors) %>
+              <ul>
+                <% flash[:errors].each do |e| %>
+                  <li><%= e %></li>
+                <% end %>
+              </ul>
+            <% end %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <% end %>
+        <div class="container-fluid p-4">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
