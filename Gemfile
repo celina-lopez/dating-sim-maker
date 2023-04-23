@@ -1,33 +1,34 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '3.0.1'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 gem 'react_on_rails'
-gem "light-service", "~> 0.14.0"
+gem "light-service"
 gem 'annotate'
-gem "simple_form", "~> 5.0"
-gem "pundit", "~> 2.1"
+gem "simple_form"
+gem "pundit"
 gem "kaminari"
-gem "attr_encrypted", "~> 3.1"
-gem "jquery-rails", "~> 4.3"
-gem "httparty", "~> 0.17"
-gem "bootstrap", "~> 4.4"
-gem "pg", "~> 1.2", "< 2.0"
-gem "pg_search", "~> 2.3"
-gem "responders", "~> 3.0"
-gem "sidekiq", "~> 6.0"
-gem "cocoon", "~> 1.2"
-gem 'redcarpet', "~> 3.5"
-gem 'puma', '~> 4.1'
-gem 'sass-rails', '>= 6'
-gem "webpacker", "~> 4.2"
-gem "turbolinks", "~> 5.2"
-gem "jbuilder", "~> 2.10"
-gem 'bootsnap', '>= 1.4.2', require: false
-gem "foreman", "~> 0.87"
+gem "attr_encrypted"
+gem "jquery-rails"
+gem "httparty"
+gem "bootstrap"
+gem "pg"
+gem "pg_search"
+gem "shakapacker", "6.5.1"
+gem "responders"
+gem "sidekiq"
+gem "cocoon"
+gem 'redcarpet'
+gem 'puma'
+gem 'sass-rails'
+gem "webpacker"
+gem "turbolinks"
+gem "jbuilder"
+gem 'bootsnap', require: false
+gem "foreman"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
