@@ -109,3 +109,46 @@ a .arrow {
 a .arrow:hover {
   filter: brightness(.8)
 }
+
+.dating-sim {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px;
+  width: 800px;
+
+  .next {
+    cursor: pointer;
+  }
+
+  .title-card {
+    padding: 18px;
+    background-color: pink;
+    text-align: center;
+    margin: 0 25%;
+    position: relative;
+    top: 30%;
+    border-radius: 18px;
+  }
+
+  .characters {
+    position: relative;
+    bottom: 90px;
+  }
+
+  .conversation {
+    width: 100%;
+    position: relative;
+    top: 315px;
+    z-index: 1;
+
+    .line {
+      background-color: pink;
+      padding: 10px;
+      margin: 0 10%;
+      width: 80%;
+      border-radius: 18px;
+      height: 110px;
+      overflow: auto;
+    }
+  }
+}
